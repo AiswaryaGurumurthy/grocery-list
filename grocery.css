@@ -1,0 +1,85 @@
+body { 
+    font-family: Arial, sans-serif; 
+    background: #f8f9fa; 
+    margin: 0; 
+    padding: 0; 
+}
+.grocery-list-container { 
+    max-width: 500px; 
+    margin: 40px auto; 
+    background: #fff; 
+    padding: 2em; 
+    border-radius: 8px; 
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1); 
+}
+#alert-message {
+    text-align: center;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+h2 { 
+    text-align: center; 
+    color: #143024; 
+}
+form { 
+    display: flex; 
+    gap: 0.5em; 
+    margin-bottom: 1em; 
+}
+input[type="text"] { 
+    flex: 1; 
+    padding: 0.5em; 
+    border: 1px solid #ccc; 
+    border-radius: 4px; 
+}
+.actions input[type="checkbox"] {
+  margin-right: 1em;
+}
+
+button { 
+    padding: 0.5em 1em; 
+    background: #40916c; 
+    color: #fff; 
+    border: none; 
+    border-radius: 4px; 
+    cursor: pointer; 
+}
+button:hover { 
+    background: #2d6a4f; 
+}
+.actions button.delete:hover { 
+    background: #fb4545; 
+}
+ul { 
+    list-style: none; 
+    padding: 0; 
+}
+li { 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+    padding: 0.5em 0; 
+    border-bottom: 1px solid #eee; 
+}
+li.purchased span { 
+    text-decoration: line-through; 
+    color: #888; 
+}
+button.clear {
+  background: #ff6b6b;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+button.clear:hover { 
+    background: #fb4545; 
+}
+.actions button { 
+    margin-left: 0.5em; 
+    background: #b7e4c7; 
+    color: #333; 
+}
+.actions button.delete { 
+    background: #ff6b6b; 
+    color: #fff; 
+}
