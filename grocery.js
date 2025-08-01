@@ -1,4 +1,4 @@
-const form = document.getElementById('grocery-input-form');
+const groceryform = document.getElementById('grocery-input-form');
 const input = document.getElementById('grocery-input-textbox');
 const list = document.getElementById('grocery-list');
 const alertMessage = document.getElementById('alert-message');
@@ -10,7 +10,6 @@ clearBtn.textContent = 'Clear grocery list';
 clearBtn.className = 'clear';
 clearBtn.style.display = 'none';
 clearBtn.style.marginTop = '1em';
-clearBtn.style.marginBottom = '2em';
 clearBtn.onclick = (e) => {
     e.preventDefault();
     list.innerHTML = '';
@@ -21,15 +20,16 @@ clearBtn.onclick = (e) => {
         alertMessage.textContent = "";
     }, 1000);
 };
-// Insert the button after the form
-form.parentNode.insertBefore(clearBtn, list.nextSibling);
+// Insert the button after the form, but still not displayed as the list is empty
+groceryform.parentNode.insertBefore(clearBtn, list.nextSibling);
 
+//Creating list item with actions
 function createListItem(text) {
     const li = document.createElement('li');
-    const span = document.createElement('span');
-    span.textContent = text;
-    li.appendChild(span);
-
+    const inputval = document.createElement('inputval');
+    inputval.textContent = text;
+    li.appendChild(inputval);
+    
     const actions = document.createElement('div');
     actions.className = 'actions';
 
@@ -49,8 +49,8 @@ function createListItem(text) {
     editBtn.innerHTML = '<i class="fa fa-edit"></i>';
     editBtn.className = 'edit';
     editBtn.onclick = () => {
-        input.value = span.textContent;
-        itemBeingEdited = span;
+        input.value = inputval.textContent;
+        itemBeingEdited = inputval;
     };
     actions.appendChild(editBtn);
 
@@ -75,7 +75,7 @@ function createListItem(text) {
     return li;
 }
 
-form.onsubmit = (e) => {
+groceryform.onsubmit = (e) => {
     e.preventDefault();
     const value = input.value.trim();
     if (value) {
