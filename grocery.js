@@ -6,7 +6,7 @@ let itemBeingEdited = null;
 
 // Create the clear button, but don't show it yet
 const clearBtn = document.createElement('button');
-clearBtn.textContent = 'Clear grocery list';
+clearBtn.textContent = 'Clear list';
 clearBtn.className = 'clear';
 clearBtn.style.display = 'none';
 clearBtn.style.marginTop = '1em';
@@ -79,6 +79,24 @@ groceryform.onsubmit = (e) => {
     e.preventDefault();
     const value = input.value.trim();
     if (value) {
+        // Check if item already exists in the list
+        let exists = false;
+        for (let i = 0; i < list.children.length; i++) {
+            // Get the text content of each item
+            let itemText = list.children[i].querySelector('inputval').textContent.trim().toLowerCase();
+            if (itemText === value.toLowerCase() && (!itemBeingEdited || list.children[i].querySelector('inputval') !== itemBeingEdited)) {
+                exists = true;
+                break;
+            }
+        }
+        if (exists) {
+            alertMessage.textContent = "Item already exists in the list!";
+            alertMessage.style.color = "red";
+            setTimeout(() => {
+                alertMessage.textContent = "";
+            }, 1500);
+            return;
+        }
         if (itemBeingEdited) {
             itemBeingEdited.textContent = value;
             alertMessage.textContent = "Item updated!";
